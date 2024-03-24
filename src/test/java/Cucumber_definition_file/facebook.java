@@ -1,7 +1,10 @@
 package Cucumber_definition_file;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import BaseClass.driverfb;
 import io.cucumber.java.en.Given;
@@ -9,13 +12,17 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class facebook {
-	WebDriver driver;
-	driverfb d=new driverfb();
+	public  WebDriver driver;
+	
 
 @Given("User navigate to homepage")
 public void user_navigate_to_homepage() {
-   
-	d.launchBrowser();
+	driver=new FirefoxDriver();
+	
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+	driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+	driver.get("https://www.facebook.com/");
 
 }
 
